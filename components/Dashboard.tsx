@@ -96,11 +96,11 @@ const Dashboard: React.FC<DashboardProps> = ({ analysis, onFindJobs, onRecalcula
                   <p className="text-white text-xl leading-relaxed italic font-medium">"{verdict}"</p>
                </div>
                
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <InsightRow icon="terminal" label="GitHub Health" text={githubInsight} verified={githubVerified} />
-                  <InsightRow icon="description" label="ATS Compliance" text={resumeInsight} verified={true} />
-                  <InsightRow icon="account_tree" label="Brand Signal" text={linkedinInsight} verified={linkedinVerified} />
-                  <InsightRow icon="trending_up" label="Market Value" text={`Est. ${salaryRange}`} verified={true} />
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <InsightRow icon="terminal" label="GITHUB HEALTH" text={githubInsight} verified={githubVerified} />
+                  <InsightRow icon="description" label="ATS COMPLIANCE" text={resumeInsight} verified={true} />
+                  <InsightRow icon="account_tree" label="BRAND SIGNAL" text={linkedinInsight} verified={linkedinVerified} />
+                  <InsightRow icon="trending_up" label="MARKET VALUE" text={`Est. ${salaryRange} (Fresh Graduate Level)`} verified={true} />
                </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ const Dashboard: React.FC<DashboardProps> = ({ analysis, onFindJobs, onRecalcula
                   <span className="material-symbols-outlined text-4xl">folder_special</span>
                </div>
                <div>
-                  <h3 className="text-3xl font-black text-white tracking-tight">Application Command Center</h3>
+                  <h3 className="text-3xl font-black text-white tracking-tighter">Application Command Center</h3>
                   <p className="text-[#9cbaa6] text-base font-medium">Manage {savedJobs.length} potential leads and {appliedJobs.length} active applications.</p>
                </div>
             </div>
@@ -247,18 +247,25 @@ const Dashboard: React.FC<DashboardProps> = ({ analysis, onFindJobs, onRecalcula
 };
 
 const InsightRow: React.FC<{ icon: string; label: string; text: string; verified?: boolean }> = ({ icon, label, text, verified }) => (
-  <div className={`bg-[#102216] p-5 rounded-[2rem] border ${verified ? 'border-[#0df259]/20' : 'border-[#3b5443]'} flex items-start gap-4 transition-all hover:scale-[1.02] shadow-sm`}>
-    <div className="size-10 bg-[#28392e] rounded-xl flex items-center justify-center text-[#0df259] shrink-0">
+  <div className="bg-[#102216] p-4 rounded-[2rem] border border-[#3b5443]/50 flex items-center gap-4 transition-all hover:border-[#0df259]/30 shadow-sm relative overflow-hidden group">
+    {/* Top Right Dot Indicator */}
+    {verified && (
+      <div className="absolute top-4 right-4 flex items-center justify-center">
+         <div className="size-1.5 bg-[#0df259] rounded-full shadow-[0_0_8px_rgba(13,242,89,0.8)]"></div>
+      </div>
+    )}
+
+    {/* Icon Container */}
+    <div className="size-11 bg-[#1a2e20] border border-[#3b5443]/60 rounded-xl flex items-center justify-center text-[#0df259] shrink-0 group-hover:scale-105 transition-transform">
        <span className="material-symbols-outlined text-xl">{icon}</span>
     </div>
-    <div className="flex-1 min-w-0">
-      <div className="flex items-center justify-between mb-1.5">
-        <p className="text-white text-[10px] font-black uppercase tracking-widest leading-none opacity-60">{label}</p>
-        {verified && (
-          <div className="size-2 bg-[#0df259] rounded-full animate-pulse"></div>
-        )}
-      </div>
-      <p className="text-white text-[11px] font-bold leading-tight truncate">{text}</p>
+
+    {/* Text Content */}
+    <div className="flex-1 min-w-0 pr-4">
+      <p className="text-[#9cbaa6] text-[10px] font-black uppercase tracking-[0.15em] leading-none mb-1.5">{label}</p>
+      <p className="text-white text-[12px] font-bold leading-tight line-clamp-2 overflow-hidden text-ellipsis">
+        {text}
+      </p>
     </div>
   </div>
 );
