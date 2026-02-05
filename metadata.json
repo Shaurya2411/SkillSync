@@ -1,0 +1,7 @@
+{
+  "name": "SkillSync",
+  "description": "A career readiness system that calculates your readiness score and matches you with internships using a Tinder-style interface.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
