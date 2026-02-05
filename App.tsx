@@ -246,20 +246,26 @@ const App: React.FC = () => {
             </nav>
           )}
         </div>
+        
+        {/* Profile and DB Connection Area */}
         <div className="flex items-center gap-4">
           {currentUserEmail && (
             <>
-              <div className="hidden sm:block text-right">
-                 <p className="text-[9px] font-black text-[#9cbaa6] uppercase tracking-[0.3em]">{currentUserEmail}</p>
-                 <div className="flex items-center justify-end gap-1.5">
-                    <div className="size-1.5 bg-[#0df259] rounded-full"></div>
-                    <p className="text-xs font-bold text-[#0df259]">Dedicated DB Connected</p>
-                 </div>
+              <div className="flex flex-col items-end">
+                <p className="text-[11px] font-black text-white uppercase tracking-[0.2em] mb-0.5">{currentUserEmail}</p>
+                <div className="flex items-center gap-1.5">
+                  <div className="size-1.5 bg-[#0df259] rounded-full shadow-[0_0_8px_rgba(13,242,89,0.8)]"></div>
+                  <p className="text-[11px] font-black text-[#0df259] tracking-tight">Dedicated DB Connected</p>
+                </div>
               </div>
-              <button onClick={handleLogout} className="text-[#9cbaa6] hover:text-white transition-colors" title="De-Sync Session">
-                <span className="material-symbols-outlined">logout</span>
+              <button 
+                onClick={handleLogout} 
+                className="text-[#9cbaa6] hover:text-white transition-all hover:scale-110 px-2" 
+                title="De-Sync Session"
+              >
+                <span className="material-symbols-outlined text-2xl">logout</span>
               </button>
-              <div className="size-11 rounded-2xl border-2 border-[#3b5443] bg-[url('https://picsum.photos/seed/user/100/100')] bg-cover shadow-lg"></div>
+              <div className="size-11 rounded-2xl border-2 border-[#3b5443] bg-[url('https://picsum.photos/seed/user/100/100')] bg-cover shadow-lg hover:border-[#0df259] transition-colors cursor-pointer"></div>
             </>
           )}
         </div>
