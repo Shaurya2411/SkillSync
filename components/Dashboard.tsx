@@ -222,6 +222,35 @@ const Dashboard: React.FC<DashboardProps> = ({ analysis, onFindJobs, onRecalcula
                 ))}
              </div>
           </div>
+
+          <div className="bg-[#102216] border border-[#3b5443] rounded-[3rem] p-8 shadow-xl relative overflow-hidden group">
+             <div className="absolute top-0 right-0 p-4">
+                <span className="material-symbols-outlined text-[#0df259]/20 text-4xl group-hover:scale-110 transition-transform">school</span>
+             </div>
+             <p className="text-[#0df259] text-[11px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+               <span className="material-symbols-outlined text-sm">auto_awesome</span> Curated Upskilling
+             </p>
+             <div className="space-y-4">
+                {recommendedCourses.map((course, idx) => (
+                  <a 
+                    key={idx} 
+                    href={course.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-5 bg-[#1a2e20] border border-[#3b5443] rounded-2xl hover:border-[#0df259] transition-all group/card shadow-sm"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                       <span className="text-[9px] font-black text-[#0df259] uppercase tracking-[0.1em] px-2 py-0.5 bg-[#0df259]/10 rounded border border-[#0df259]/20">
+                         {course.platform}
+                       </span>
+                       <span className="material-symbols-outlined text-sm text-[#9cbaa6] group-hover/card:text-[#0df259] group-hover/card:translate-x-1 transition-all">arrow_forward</span>
+                    </div>
+                    <h4 className="text-white font-bold text-sm mb-1 line-clamp-2 leading-tight">{course.title}</h4>
+                    <p className="text-[#9cbaa6] text-[10px] italic leading-relaxed">{course.reason}</p>
+                  </a>
+                ))}
+             </div>
+          </div>
         </div>
       </div>
 
